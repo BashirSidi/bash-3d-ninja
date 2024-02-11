@@ -1,19 +1,24 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import logo from './assets/cerebital_icon.png'
+import {
+  Grid,
+  Toolbar,
+  IconButton,
+  Divider,
+  List,
+  Container,
+  Paper,
+  Typography,
+  Select,
+  MenuItem,
+  Box,
+  Badge,
+} from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-// import { mainListItems, secondaryListItems } from './listItems';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MuiDrawer from '@mui/material/Drawer';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const drawerWidth = 240;
 
@@ -52,80 +57,129 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen,
         }),
-        width: theme.spacing(7),
+        width: '45px',
         [theme.breakpoints.up('sm')]: {
-          width: theme.spacing(9),
+          width: '45px',
         },
       }),
     },
   }),
 );
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function App () {
-  const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" elevation={0}>
           <Toolbar
-            sx={{
-              pr: '24px', // keep right padding when drawer closed
+          sx={{
+              
+              display: 'flex',
+            justifyContent: 'space-between',
+            alignContent: 'center',
+              pr: '24px',
+              backgroundColor: '#FFEADD',
+              boxShadow: 'none',
+              color: '#f4313f',
             }}
           >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' }),
-              }}
-            >
-              <Box>Menu Icon</Box>
-            </IconButton>
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
             >
-              Dashboard
-            </Typography>
+              <img src={logo} alt="logo" height={50} />
+          </Typography>
+          <Box
+            sx={{
+            }}
+          >
+            <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    IconComponent={() => (
+                      <ExpandMoreIcon />
+                    )}
+                    sx={{
+                      background: "#F2F2F2",
+                      height: {xs: "42px", md: "50px"},
+                      fontWeight: 400,
+                      fontSize: "16px",
+                      fontFamily: "Montserrat",
+                      lineHeight: "24px",
+                      borderRadius: "8px",
+                      padding: {xs: "8px 16px 8px 10px", md: "8px 24px 8px 24px"},
+                      boxShadow: "none",
+                      "& .MuiMenu-list": {
+                        paddingTop: 0,
+                        paddingBottom: 0,
+                      },
+                      ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                      "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                        {
+                          border: 0,
+                        },
+                      "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                        {
+                          border: 0,
+                        },
+                    }}
+                    MenuProps={{
+                      PaperProps: {
+                        sx: {
+                          "& .MuiMenu-list" : {
+                            paddingTop: 0,
+                            paddingBottom: 0,
+                          },
+                          bgcolor: '#ffffff',
+                          filter: "drop-shadow(4px 4px 16px rgba(0, 0, 0, 0.1))",
+                          borderRadius: "0px 0px 16px 16px;",
+                          marginTop: "6px",
+                          '& .MuiMenuItem-root': {
+                            padding: 2,
+                          },
+                          '& .Mui-selected': {
+                            borderRadius: "4px",
+                            background: "transparent",
+                            borderLeft: "4px solid #f4313f",
+                            borderRight: "4px solid #f4313f",
+                          },
+                        },
+                      },
+                    }}
+                    // value={noteType}
+                    // onChange={handleNoteTypeChange}
+                    displayEmpty={true}
+                    renderValue={value => value?.length ? Array.isArray(value) ? value.join(', ') : value : <Typography sx={{
+                      fontWeight: 0,
+                        fontSize: "16px",
+                        fontFamily: "Montserrat",
+                        lineHeight: "24px",
+                        color: "#B2B2B2",
+                    }}>Select file type:</Typography>}
+                  >
+                    <MenuItem value="gltf">gltf</MenuItem>
+                    <MenuItem value="gltf">glb</MenuItem>
+                  </Select>
+          </Box>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <Box>Notification Icon</Box>
+              <Badge badgeContent={4} color="red">
+                <NotificationsIcon />
               </Badge>
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <Box>Chev Icon</Box>
-            </IconButton>
-          </Toolbar>
+        <Drawer variant="permanent">
           <Divider />
-          <List component="nav">
-            <Box>Main list goes here..</Box>
-            <Divider sx={{ my: 1 }} />
-            <Box>Secondary list goes here...</Box>
+          <List component="nav" sx={{mt: '55px'}}>
+          <WidgetsIcon
+            sx={{
+              color: '#f4313f',
+              width: '43px',
+              border: '1px solid #f4313f',
+            }}
+          />
           </List>
         </Drawer>
         <Box
@@ -180,6 +234,5 @@ export default function App () {
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
   );
 }
