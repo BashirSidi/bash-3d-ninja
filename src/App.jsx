@@ -104,6 +104,7 @@ export default function App () {
                     sx={{
                       background: "#F2F2F2",
                       height: {xs: "42px", md: "50px"},
+                      width: "400px",
                       fontWeight: 400,
                       fontSize: "16px",
                       fontFamily: "Montserrat",
