@@ -1,13 +1,11 @@
 import { styled } from '@mui/material/styles';
 import logo from './assets/cerebital_icon.png'
 import {
-  Grid,
   Toolbar,
   IconButton,
   Divider,
   List,
   Container,
-  Paper,
   Typography,
   Select,
   MenuItem,
@@ -19,6 +17,9 @@ import WidgetsIcon from '@mui/icons-material/Widgets';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MuiDrawer from '@mui/material/Drawer';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+// import { PlasticToy } from './components/PlasticToy';
+// import HatObj from './components/HatObj';
+import GLBViewer from './components/GLBViewer';
 
 const drawerWidth = 240;
 
@@ -197,41 +198,11 @@ export default function App () {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Box>Chart goes here...</Box>
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Box>Deposit goes here...</Box>
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Box>Orders goes here</Box>
-                </Paper>
-              </Grid>
-            </Grid>
-            <Box>Copy right goes here..</Box>
+            <Box>
+            {/* <PlasticToy /> */}
+            {/* <HatObj /> */}
+            <GLBViewer />
+            </Box>
           </Container>
         </Box>
       </Box>
