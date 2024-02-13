@@ -6,7 +6,7 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { Box } from '@mui/material';
 
 function MeshComponent() {
-  const fileUrl = "/hat-obj/source/cappello/cappello/cappello.obj"; // Update the file path
+  const fileUrl = "/hat-obj/source/cappello/cappello/cappello.obj";
   const mesh = useRef();
 
   useFrame(() => {
@@ -33,13 +33,13 @@ export function HatObj() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', // Adjust as needed
+        height: '100vh',
       }}
     >
       <Canvas
         sx={{
-          height: '80vh', // Adjust as needed
-          width: '80vw', // Adjust as needed
+          height: '80vh',
+          width: '80vw',
         }}
       >
         <OrbitControls />

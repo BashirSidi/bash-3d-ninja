@@ -31,13 +31,13 @@ export function PlasticToy() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', // Adjust as needed
+        height: '100vh',
       }}
     >
       <Canvas
         sx={{
-          height: '80vh', // Adjust as needed
-          width: '80vw', // Adjust as needed
+          height: '80vh',
+          width: '80vw',
         }}
       >
         <OrbitControls />

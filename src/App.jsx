@@ -19,7 +19,8 @@ import MuiDrawer from '@mui/material/Drawer';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 // import { PlasticToy } from './components/PlasticToy';
 // import HatObj from './components/HatObj';
-import GLBViewer from './components/GLBViewer';
+// import GLBViewer from './components/GLBViewer';
+// import { DAEViewer } from './components/DAEViewer';
 
 const drawerWidth = 240;
 
@@ -201,7 +202,8 @@ export default function App () {
             <Box>
             {/* <PlasticToy /> */}
             {/* <HatObj /> */}
-            <GLBViewer />
+            {/* <GLBViewer /> */}
+            {/* <DAEViewer /> */}
             </Box>
           </Container>
         </Box>
