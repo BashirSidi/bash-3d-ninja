@@ -17,10 +17,18 @@ import WidgetsIcon from '@mui/icons-material/Widgets';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MuiDrawer from '@mui/material/Drawer';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-// import { PlasticToy } from './components/PlasticToy';
+
+
+// import { PlasticToyGLTF } from './components/PlasticToyGLTF';
 // import HatObj from './components/HatObj';
 // import GLBViewer from './components/GLBViewer';
 // import { DAEViewer } from './components/DAEViewer';
+// import JSON3DViewer from './components/JSON3DViewer';
+// import FBXViewer from './components/FBXViewer';
+// import STLViewer from './components/STLViewer';
+// import ThreeMFViewer from './components/ThreeMFViewer';
+// import PngThreeJSViewer from './components/PngThreeJSViewer';
+import JpgThreeJSViewer from './components/JpgThreeJSViewer';
 
 const drawerWidth = 240;
 
@@ -200,10 +208,16 @@ export default function App () {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Box>
-            {/* <PlasticToy /> */}
+            {/* <PlasticToyGLTF /> */}
             {/* <HatObj /> */}
             {/* <GLBViewer /> */}
             {/* <DAEViewer /> */}
+            {/* <ThreeMFViewer /> */}
+            {/* <JSON3DViewer /> */}
+            {/* <FBXViewer /> */}
+            {/* <STLViewer /> */}
+            {/* <PngThreeJSViewer /> */}
+            <JpgThreeJSViewer />
             </Box>
           </Container>
         </Box>

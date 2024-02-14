@@ -23,6 +23,8 @@
     "react-3d-viewer": "^1.0.12",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
+    "react-stl-file-viewer": "^0.0.5",
+    "react-three-fbx-for-pyt": "^1.0.9",
     "three": "^0.161.0"
   },
   "devDependencies": {

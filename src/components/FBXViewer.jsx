@@ -1,52 +1,35 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader"; 
-import { Box } from '@mui/material';
+import ReactThreeFbxViewer from 'react-three-fbx-for-pyt';
 
-function MeshComponent() {
-  const fbxUrl = "ball.fbx"; 
-  const mesh = useRef();
+function FBXViewer() {
+  const fileUrl = 'asd.fbx';
 
-  useFrame(() => {
-    if (mesh.current) {
-      mesh.current.rotation.y += 0.01;
-    }
-  });
+  const onLoad =(e) => {
+    console.log(e);
+  }
 
-  const loader = new FBXLoader();
-  loader.load(fbxUrl, (fbx) => {
-    mesh.current.add(fbx);
-  });
+  const onError =(e) => {
+    console.log(e);
+  }
+ 
+  let cameraPosition = {
+    x:150,
+    y:300,
+    z:350
+  }
 
   return (
-    <group ref={mesh} />
-  );
-}
-
-export function FBXViewer() {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      <Canvas
-        sx={{
-          height: '80vh',
-          width: '80vw',
-        }}
-      >
-        <OrbitControls />
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <MeshComponent />
-      </Canvas>
-    </Box>
+    <div>
+      <ReactThreeFbxViewer
+				alpha
+				enablePan
+				width={1000} disableZoom
+				height={500} disableRotate
+				cameraPosition={cameraPosition} 
+        url={fileUrl} 
+        onLoading={onLoad} 
+        onError={onError}/>
+    </div>
   );
 }
 
