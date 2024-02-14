@@ -17,17 +17,19 @@ import WidgetsIcon from '@mui/icons-material/Widgets';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MuiDrawer from '@mui/material/Drawer';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import {useSelector, useDispatch} from 'react-redux';
+import { fileType } from './store/slices/fileTypeSlice'; 
 
 
-// import { PlasticToyGLTF } from './components/PlasticToyGLTF';
-// import HatObj from './components/HatObj';
-// import GLBViewer from './components/GLBViewer';
-// import { DAEViewer } from './components/DAEViewer';
-// import JSON3DViewer from './components/JSON3DViewer';
-// import FBXViewer from './components/FBXViewer';
-// import STLViewer from './components/STLViewer';
-// import ThreeMFViewer from './components/ThreeMFViewer';
-// import PngThreeJSViewer from './components/PngThreeJSViewer';
+import { PlasticToyGLTF } from './components/PlasticToyGLTF';
+import HatObj from './components/HatObj';
+import GLBViewer from './components/GLBViewer';
+import { DAEViewer } from './components/DAEViewer';
+import JSON3DViewer from './components/JSON3DViewer';
+import FBXViewer from './components/FBXViewer';
+import STLViewer from './components/STLViewer';
+import ThreeMFViewer from './components/ThreeMFViewer';
+import PngThreeJSViewer from './components/PngThreeJSViewer';
 import JpgThreeJSViewer from './components/JpgThreeJSViewer';
 
 const drawerWidth = 240;
@@ -76,7 +78,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function App () {
+export default function App() {
+  const selectFileTypes = (state) => state.fileTypes.fileTypes;
+  const selectFile = (state) => state.fileTypes.fileType;
+  const dispatch = useDispatch();
+  const fileTypes = useSelector(selectFileTypes);
+  const fType = useSelector(selectFile);
+
+  const handleFileTypeChange = (newFileType) => {
+    dispatch(fileType(newFileType));
+  };
 
   return (
       <Box sx={{ display: 'flex' }}>
@@ -170,8 +181,15 @@ export default function App () {
                         color: "#B2B2B2",
                     }}>Select file type:</Typography>}
                   >
-                    <MenuItem value="gltf">gltf</MenuItem>
-                    <MenuItem value="gltf">glb</MenuItem>
+                    {fileTypes.map((file, i) => (
+                      <MenuItem
+                        key={i}
+                          value={file}
+                          onClick={() => handleFileTypeChange(file)}
+                        >
+                          {file}
+                        </MenuItem>
+                    ))}
                   </Select>
           </Box>
             <IconButton color="inherit">
@@ -208,16 +226,16 @@ export default function App () {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Box>
-            {/* <PlasticToyGLTF /> */}
-            {/* <HatObj /> */}
-            {/* <GLBViewer /> */}
-            {/* <DAEViewer /> */}
-            {/* <ThreeMFViewer /> */}
-            {/* <JSON3DViewer /> */}
-            {/* <FBXViewer /> */}
-            {/* <STLViewer /> */}
-            {/* <PngThreeJSViewer /> */}
-            <JpgThreeJSViewer />
+            {fType === "gltf" && <PlasticToyGLTF />} 
+            {fType === "obj" && <HatObj />} 
+            {fType === "glb" && <GLBViewer />} 
+            {fType === "dae" && <DAEViewer />}
+            {fType === "3mf" && <ThreeMFViewer />}
+            {fType === "json" && <JSON3DViewer />}
+            {fType === "fbx" && <FBXViewer />} 
+            {fType === "stl" && <STLViewer />}
+            {fType === "png" && <PngThreeJSViewer />} 
+            {fType === "jpg" && <JpgThreeJSViewer />}  
             </Box>
           </Container>
         </Box>

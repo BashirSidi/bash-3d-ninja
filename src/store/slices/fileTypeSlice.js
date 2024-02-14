@@ -1,7 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialStateValues = {
-  fileTypes: ["gltf", "glb"],
+  fileTypes: [
+    "gltf",
+    "glb",
+    "dae",
+    "fbx",
+    "obj",
+    "jpg",
+    "png",
+    "json",
+    "3mf",
+    "stl"
+  ],
+  fileType: "",
 }
 
 export const fileTypesSlice = createSlice({
@@ -9,13 +21,13 @@ export const fileTypesSlice = createSlice({
   initialState: initialStateValues,
   reducers: {
     // eslint-disable-next-line no-unused-vars
-    fileTypes: (state, action) => {
-      state.fileTypes;
+    fileType: (state, action) => {
+      state.fileType = action.payload;
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { fileTypes } = fileTypesSlice.actions;
+export const { fileType } = fileTypesSlice.actions;
 
 export default fileTypesSlice.reducer;
